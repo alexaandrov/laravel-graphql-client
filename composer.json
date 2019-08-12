@@ -1,0 +1,42 @@
+{
+    "name": "alexaandrov/laravel-graphql-client",
+    "description": "GraphQL client for laravel/lumen",
+    "type": "library",
+    "keywords": [
+        "api",
+        "client",
+        "graphql",
+        "laravel",
+        "laravel-graphql"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grigory Alexandrov",
+            "email": "alexaaandrov@gmail.com",
+            "homepage": "https://www.linkedin.com/in/alexaandrov/"
+        }
+    ],
+    "require": {
+        "php": ">= 7.1",
+        "ext-json": "*",
+        "euautomation/graphql-client": "^0.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alexaandrov\\GraphQL\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alexaandrov\\GraphQL\\GraphQLClientServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
