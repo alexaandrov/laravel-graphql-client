@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Request;
 class Client
 {
     protected $client;
+    protected $config;
 
     public function __construct()
     {
-        $config = config('graphql-client');
+        $this->config = config('graphql-client');
 
-        $this->client = new \EUAutomation\GraphQL\Client($config['endpoint']);
+        $this->client = new \EUAutomation\GraphQL\Client($this->config['endpoint_url']);
     }
 
     public function fetch(string $query, array $variables = []): \EUAutomation\GraphQL\Response
@@ -22,16 +23,22 @@ class Client
 
     protected function getHeaders()
     {
-        $options = [];
+        $headers = [];
 
         if ($authorization = Request::header('Authorization')) {
-            $options['Authorization'] = $authorization;
+            $headers['Authorization'] = $authorization;
         }
 
         if ($requestId = Request::header('X-Request-Id')) {
-            $options['RequestId'] = $requestId;
+            $headers['X-Request-Id'] = $requestId;
         }
 
-        return $options;
+        foreach ($this->config['headers'] as $name => $value) {
+            if (!empty($value)) {
+                $headers[$name] = $value;
+            }
+        }
+
+        return $headers;
     }
 }
