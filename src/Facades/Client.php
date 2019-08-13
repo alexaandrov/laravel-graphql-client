@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Alexaandrov\GraphQL\Client
+ * @method static Client fetch(string $query, array $variables = []): \EUAutomation\GraphQL\Response
  */
 class Client extends Facade
 {
