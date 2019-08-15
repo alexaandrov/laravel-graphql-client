@@ -13,7 +13,7 @@ composer require alexaandrov/laravel-graphql-client
 Set endpoint url in your .env
 
 ```
-ENDPOINT_URL=https://your-endpoint.url
+GRAPHQL_ENDPOINT_URL=https://your-endpoint.url
 ```
 
 ## For laravel:
